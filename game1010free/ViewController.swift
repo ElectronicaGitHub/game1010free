@@ -1,17 +1,18 @@
 import UIKit
 import iAd
 
+ let padding : CGFloat = 2;
+ let size : CGFloat = 28;
+ let map_size = 10;
+
 class ViewController: UIViewController, ADBannerViewDelegate {
     @IBOutlet weak var adBanner: ADBannerView!
     
-    let padding : CGFloat = 2;
-    let map_size = 10;
-    let size : CGFloat = 28;
     let defaultColor = UIColor(rgb: 0xEEEEEE)
     var rectanglesArray = [Rectangle]()
     var figuresArray = [Figure]()
     let afterTouchYOffset : CGFloat = 70
-    let sizeCoef : CGFloat = 1
+    let figuresScaling = (300/3) / ((size + padding) * 5)
     var score = 0
     var round_score = 0
     var score_multiplier = 0
@@ -20,7 +21,7 @@ class ViewController: UIViewController, ADBannerViewDelegate {
     var figures_for_test_inited : figures_for_test = figures_for_test()
     // DIMENSIONS
     let rectsHeight = 50
-    let figuresHeight = 400
+    let figuresHeight = 435
     var gameView : UIView?
     var blurView : UIVisualEffectView?
     var endGameViewLabel : UILabel?
@@ -96,17 +97,12 @@ class ViewController: UIViewController, ADBannerViewDelegate {
         var viewCoords = touch.locationInView(view)
         //ищем в FIGURES и находим нужный RECT
         for j in figuresArray {
-            for i in j.figure {
-                if viewCoords.x >= i.x  &&
-                    viewCoords.x <= i.x + i.size &&
-                    viewCoords.y >= i.y &&
-                    viewCoords.y <= i.y + i.size {
-                        selectedFigure = j
-                        for f in selectedFigure!.figure {
-                            f.startX = f.x
-                            f.startY = f.y
-                        }
-                }
+            let i = j.figureView.frame
+            if viewCoords.x >= i.origin.x  && viewCoords.x <= i.origin.x + i.width &&
+                viewCoords.y >= i.origin.y && viewCoords.y <= i.origin.y + i.height {
+                    selectedFigure = j
+                    selectedFigure!.start_x = selectedFigure!.figureView.frame.origin.x
+                    selectedFigure!.start_y = selectedFigure!.figureView.frame.origin.y
             }
         }
         startTouchCoords = touch.locationInView(view)
@@ -114,12 +110,10 @@ class ViewController: UIViewController, ADBannerViewDelegate {
         if selectedFigure != nil {
             // НЕМНОГО ПОДНИМАЕМ ФИГУРУ ДЛЯ УДОБСТВА
             UIView.animateWithDuration(0.1, animations: {
-                for k in self.selectedFigure!.figure {
-                    k.box.frame.origin.y -= self.afterTouchYOffset
-                    k.box.frame.size.width = self.size
-                    k.box.frame.size.height = self.size
-                    k.y -= self.afterTouchYOffset
-                }
+                self.selectedFigure!.figureView.transform = CGAffineTransformIdentity
+                self.selectedFigure!.figureView.frame.origin.y -= self.afterTouchYOffset
+//                self.selectedFigure!.figureView.frame.origin.x += 25
+                
             })
         }
     }
@@ -134,15 +128,8 @@ class ViewController: UIViewController, ADBannerViewDelegate {
             var dx = coords.x - startTouchCoords.x as CGFloat
             var dy = coords.y - startTouchCoords.y as CGFloat
             
-            for i in selectedFigure!.figure {
-                let new_x = i.startX + dx
-                let new_y = i.startY + dy - afterTouchYOffset
-
-                i.box.frame.origin.x = new_x
-                i.x = new_x
-                i.box.frame.origin.y = new_y
-                i.y = new_y
-            }
+            selectedFigure!.figureView.frame.origin.x = selectedFigure!.start_x + dx - 25
+            selectedFigure!.figureView.frame.origin.y = selectedFigure!.start_y + dy - afterTouchYOffset - 25
         }
     }
     
@@ -155,12 +142,13 @@ class ViewController: UIViewController, ADBannerViewDelegate {
         
         if selectedFigure != nil {
             // ОБРАБОТКА ФИГУРЫ
+            let figurePos : CGPoint = CGPoint(x: selectedFigure!.figureView.frame.origin.x, y: selectedFigure!.figureView.frame.origin.y)
             for var i=0; i < selectedFigure!.figure.count; i++ {
                 for var j=0; j < rectanglesArray.count; j++ {
-                    if selectedFigure!.figure[i].x + selectedFigure!.figure[i].size/2 >= rectanglesArray[j].x &&
-                        selectedFigure!.figure[i].x + selectedFigure!.figure[i].size/2 <= rectanglesArray[j].x + rectanglesArray[j].size &&
-                        selectedFigure!.figure[i].y + selectedFigure!.figure[i].size/2 >= rectanglesArray[j].y &&
-                        selectedFigure!.figure[i].y + selectedFigure!.figure[i].size/2 <= rectanglesArray[j].y + rectanglesArray[j].size &&
+                    if selectedFigure!.figure[i].inner_x + figurePos.x + selectedFigure!.figure[i].size/2 >= rectanglesArray[j].outer_x &&
+                        selectedFigure!.figure[i].inner_x + figurePos.x + selectedFigure!.figure[i].size/2 <= rectanglesArray[j].outer_x + rectanglesArray[j].size &&
+                        selectedFigure!.figure[i].inner_y + figurePos.y + selectedFigure!.figure[i].size/2 >= rectanglesArray[j].outer_y &&
+                        selectedFigure!.figure[i].inner_y + figurePos.y + selectedFigure!.figure[i].size/2 <= rectanglesArray[j].outer_y + rectanglesArray[j].size &&
                         rectanglesArray[j].type == "default"
                     {
                             modified++
@@ -176,11 +164,18 @@ class ViewController: UIViewController, ADBannerViewDelegate {
             
             if modified == selectedFigure?.figure.count {
                 // ФИГУРА ПОПАЛА
+                for i in selectedFigure!.figure {
+                    i.box.frame.origin.x = selectedFigure!.figureView.frame.origin.x + i.inner_x
+                    i.box.frame.origin.y = selectedFigure!.figureView.frame.origin.y + i.inner_y
+                    view.addSubview(i.box)
+                }
+                
+                selectedFigure!.figureView.removeFromSuperview()
                 UIView.animateKeyframesWithDuration(0.1, delay: 0, options: nil, animations: {
                     for var i=0; i < rectArr.count; i++ {
                         self.rectanglesArray[rectArr[i]].type = "modified"
-                        self.selectedFigure?.figure[figArr[i]].box.frame.origin.x = self.rectanglesArray[rectArr[i]].x
-                        self.selectedFigure?.figure[figArr[i]].box.frame.origin.y = self.rectanglesArray[rectArr[i]].y
+                        self.selectedFigure!.figure[figArr[i]].box.frame.origin.x = self.rectanglesArray[rectArr[i]].outer_x
+                        self.selectedFigure!.figure[figArr[i]].box.frame.origin.y = self.rectanglesArray[rectArr[i]].outer_y
                     }
                     }, completion: { _ in
                         for var i=0; i < rectArr.count; i++ {
@@ -215,6 +210,9 @@ class ViewController: UIViewController, ADBannerViewDelegate {
                         
                         if game_ended == true {
                             println("игра закончена нахуй")
+                            for i in self.figuresArray {
+                                i.figureView.removeFromSuperview()
+                            }
                             self.showMenu(self.score)
                         }
                         
@@ -226,21 +224,19 @@ class ViewController: UIViewController, ADBannerViewDelegate {
                 
             } else {
                 // ФИГУРА НЕ ПОПАЛА И ВОЗРВРАЩАЕТСЯ НА ПРЕЖНЕЕ МЕСТО
-                for i in selectedFigure!.figure {
+                
                     UIView.animateKeyframesWithDuration(0.2, delay: 0, options: nil, animations: {
-                        i.x = i.startX
-                        i.y = i.startY
-                        i.box.frame.origin.x = i.startX
-                        i.box.frame.origin.y = i.startY
+                        self.selectedFigure!.figureView.transform = CGAffineTransformMakeScale(self.figuresScaling, self.figuresScaling)
+                        self.selectedFigure!.figureView.frame.origin.x = self.selectedFigure!.start_x
+                        self.selectedFigure!.figureView.frame.origin.y = self.selectedFigure!.start_y
                     }, completion: nil)
-                }
                 selectedFigure = nil
             }
         }
     }
     
     func breakLines(blocks : [Int]) {
-        var date = NSDate()
+//        var date = NSDate()
         var rows : [Int] = [Int](),
             cols : [Int] = [Int]()
         
@@ -316,9 +312,9 @@ class ViewController: UIViewController, ADBannerViewDelegate {
         round_score = 0
         score_multiplier = 0
         
-        var endDate = NSDate()
-        var exec_time = endDate.timeIntervalSinceDate(date)
-        println("breakLines \(exec_time)")
+//        var endDate = NSDate()
+//        var exec_time = endDate.timeIntervalSinceDate(date)
+//        println("breakLines \(exec_time)")
     }
     
     func dissapearing(j : Int, element : String) {
@@ -341,31 +337,34 @@ class ViewController: UIViewController, ADBannerViewDelegate {
     }
     
     func generateFigures() {
-        var date = NSDate()
-        var figuresPositions : [CGFloat] = [view.frame.width/4, view.frame.width/2, view.frame.width*3/4]
+//        var date = NSDate()
+        var figuresPositions : [CGFloat] = [view.frame.width/6, view.frame.width/2, view.frame.width*5/6]
         for var i = 0; i < 3; i++ {
             var cnt = UInt32(figures_map.maps.count)
             var figNumber = Int(arc4random_uniform(cnt))
+            var figureView = UIView(frame: CGRect(x: 0, y: 0, width: (size + padding) * 5, height: (size + padding) * 5))
             var fig = Figure(map: figures_map.maps[figNumber]["map"] as [NSDictionary],
                              color: figures_map.maps[figNumber]["color"] as UIColor,
-                             size: size * sizeCoef,
-                             padding: padding * sizeCoef,
                              view : gameView!,
+                             figure_view : figureView,
                              x: figuresPositions[i],
                              w: figures_map.maps[figNumber]["w"] as Int,
                              h: figures_map.maps[figNumber]["h"] as Int,
                              type: figures_map.maps[figNumber]["type"] as String,
                              start_w_offset : figures_map.maps[figNumber]["start_w"] as? Int
             )
-//            for i in fig.figure {
-//                i.box.frame.size.width = size * 0.7
-//                i.box.frame.size.height = size * 0.7
-//            }
+            figureView.center = CGPoint(x: figuresPositions[i], y: CGFloat(figuresHeight))
+            view.addSubview(figureView)
+            for i in fig.figure {
+                figureView.addSubview(i.box)
+            }
+            figureView.transform = CGAffineTransformMakeScale(figuresScaling, figuresScaling)
+            
             figuresArray.append(fig)
         }
-        var endDate = NSDate()
-        var exec_time = endDate.timeIntervalSinceDate(date)
-        println("generateFigures \(exec_time)")
+//        var endDate = NSDate()
+//        var exec_time = endDate.timeIntervalSinceDate(date)
+//        println("generateFigures \(exec_time)")
     }
     
     func setScore(score : Int) {
@@ -374,14 +373,13 @@ class ViewController: UIViewController, ADBannerViewDelegate {
     
     
     // FOR TESTS
-    var last_rects = Array<UIView>()
+//    var last_rects = Array<UIView>()
     
     func tryFigureOnMap(figure : Figure) -> Bool {
-        var date = NSDate()
+//        var date = NSDate()
         let rect_map = figures_for_test_inited.maps[figure.type]!
         let except_first_element_width = figure.w
         let start_width_offset = figure.start_w_offset == nil ? 0 : figure.start_w_offset
-        println("start_width_offset \(start_width_offset)")
         let except_first_element_height = figure.h
         var rect_figures = Array<Array<Int>>()
         var rect_offsets = Array<Array<Int>>()
@@ -412,23 +410,23 @@ class ViewController: UIViewController, ADBannerViewDelegate {
                         }
 //                        println("========")
                         if counter == rect_map.count {
-                            var endDate = NSDate()
-                            var exec_time = endDate.timeIntervalSinceDate(date)
-                            println("tryFiguresOnMap \(exec_time)")
+//                            var endDate = NSDate()
+//                            var exec_time = endDate.timeIntervalSinceDate(date)
+//                            println("tryFiguresOnMap \(exec_time)")
                             
                             // tests
-                            for i in last_rects {
-                                i.removeFromSuperview()
-                            }
-                            last_rects = []
-                            for i in array_helpers {
-                                let rect = rectanglesArray[i]
-                                var q : UIView = UIView(frame: CGRect(x: rect.x, y: rect.y, width: rect.size, height: rect.size))
-                                q.backgroundColor = UIColor.blueColor()
-                                q.alpha = 0.1
-                                view.addSubview(q)
-                                last_rects.append(q)
-                            }
+//                            for i in last_rects {
+//                                i.removeFromSuperview()
+//                            }
+//                            last_rects = []
+//                            for i in array_helpers {
+//                                let rect = rectanglesArray[i]
+//                                var q : UIView = UIView(frame: CGRect(x: rect.outer_x, y: rect.outer_y, width: rect.size, height: rect.size))
+//                                q.backgroundColor = UIColor.blueColor()
+//                                q.alpha = 0.1
+//                                view.addSubview(q)
+//                                last_rects.append(q)
+//                            }
                             //
                             return true
                         }
@@ -475,7 +473,7 @@ class ViewController: UIViewController, ADBannerViewDelegate {
             for j in 1...map_size {
                 let _x = (view.frame.width - CGFloat(map_size) * (CGFloat(size) + CGFloat(padding)))/2 + CGFloat(j-1) * (size + padding)
                 let _y = CGFloat(rectsHeight) + CGFloat(i-1) * (size + padding)
-                var r = Rectangle(type: "default", x: _x, y: _y, size: size, color: defaultColor, view: gameView!)
+                var r = Rectangle(type: "default", x: _x, y: _y, size: size, color: defaultColor, view: gameView!,real_x : _x, real_y : _y)
                 rectanglesArray.append(r)
             }
         }

@@ -14,7 +14,6 @@ extension UIColor {
 class figures {
     var maps : [NSDictionary] = [NSDictionary]()
     init() {
-        println("figures Init")
         var a = -1.5
         var b = -0.5
         var c = -1
@@ -72,7 +71,7 @@ class figures {
         // line 5h
         self.maps.append([
             "map" : [
-                [ "x" : a, "y" : b], [ "x" : b, "y" : b], [ "x" : 0.5, "y" : b], [ "x" : 1.5, "y" : b], [ "x" : 2.5, "y" : b]
+                 [ "x" : -2.5, "y" : b], [ "x" : a, "y" : b], [ "x" : b, "y" : b], [ "x" : 0.5, "y" : b], [ "x" : 1.5, "y" : b]
             ],
             "color" : UIColor(rgb: 0xBD4932),
             "w" : 4,
