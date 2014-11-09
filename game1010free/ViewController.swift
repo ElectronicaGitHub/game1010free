@@ -28,6 +28,11 @@ class ViewController: UIViewController, ADBannerViewDelegate {
     var endGameViewButton : UIButton?
     var rectsForDissapear = Array<Dictionary<String,Any>>()
     var clearNumbers = Array<Int>()
+    var figureEndCoords : CGPoint = CGPoint()
+    var rank = -1
+    var maxRank = Ranks.count - 1
+    var lastShowedRank = UIView()
+    var rankView = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,29 +59,6 @@ class ViewController: UIViewController, ADBannerViewDelegate {
         self.adBanner.hidden = true
         
         // MENU ADD
-        func menuInit() {
-            endGameView = UIView(frame: CGRect(x: 0, y: 0, width: 250, height: 150))
-            endGameView.center = CGPoint(x: view.center.x, y: -400)
-            endGameView.backgroundColor = UIColor(rgb: 0xFFFFFF)
-            endGameView.layer.shadowColor = UIColor.blackColor().CGColor
-            endGameView.layer.shadowOpacity = 0.3
-            endGameView.layer.shadowOffset = CGSize(width: 1, height: 3)
-            view.addSubview(endGameView)
-            endGameViewLabel = UILabel(frame: CGRect(x: 0, y: 0, width: endGameView.frame.width, height: 40))
-            endGameViewLabel!.font = UIFont(name: "HelveticaNeue-CondensedBlack", size: 20)
-            endGameViewLabel!.text = "Menu"
-            endGameViewLabel!.backgroundColor = UIColor.brownColor()
-            endGameViewLabel!.textAlignment = NSTextAlignment.Center
-            endGameView.addSubview(endGameViewLabel!)
-            
-            endGameViewButton = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 40))
-            endGameViewButton!.backgroundColor = UIColor(rgb: 0xD6D6D6)
-            endGameViewButton!.setTitle("New Game", forState: UIControlState.Normal)
-            endGameViewButton!.addTarget(self, action: "startGame", forControlEvents: UIControlEvents.TouchUpInside)
-            endGameViewButton!.center = CGPoint(x: endGameView.frame.size.width/2, y: 100)
-            endGameView.addSubview(endGameViewButton!)
-
-        }
         menuInit()
         showMenu(score)
     }
@@ -164,31 +146,36 @@ class ViewController: UIViewController, ADBannerViewDelegate {
             
             if modified == selectedFigure?.figure.count {
                 // ФИГУРА ПОПАЛА
-                for i in selectedFigure!.figure {
-                    i.box.frame.origin.x = selectedFigure!.figureView.frame.origin.x + i.inner_x
-                    i.box.frame.origin.y = selectedFigure!.figureView.frame.origin.y + i.inner_y
+                let localSF = selectedFigure
+                selectedFigure = nil
+                figureEndCoords = localSF!.figureView.center
+                
+                // добавляем фигуры из view фигуры в главный view на тех же глобальных координатах
+                for i in localSF!.figure {
+                    i.box.frame.origin.x = localSF!.figureView.frame.origin.x + i.inner_x
+                    i.box.frame.origin.y = localSF!.figureView.frame.origin.y + i.inner_y
                     view.addSubview(i.box)
                 }
+                localSF!.figureView.removeFromSuperview()
                 
-                selectedFigure!.figureView.removeFromSuperview()
                 UIView.animateKeyframesWithDuration(0.1, delay: 0, options: nil, animations: {
                     for var i=0; i < rectArr.count; i++ {
                         self.rectanglesArray[rectArr[i]].type = "modified"
-                        self.selectedFigure!.figure[figArr[i]].box.frame.origin.x = self.rectanglesArray[rectArr[i]].outer_x
-                        self.selectedFigure!.figure[figArr[i]].box.frame.origin.y = self.rectanglesArray[rectArr[i]].outer_y
+                        localSF!.figure[figArr[i]].box.frame.origin.x = self.rectanglesArray[rectArr[i]].outer_x
+                        localSF!.figure[figArr[i]].box.frame.origin.y = self.rectanglesArray[rectArr[i]].outer_y
                     }
                     }, completion: { _ in
                         for var i=0; i < rectArr.count; i++ {
-                            if self.selectedFigure != nil {
-                                self.rectanglesArray[rectArr[i]].color = self.selectedFigure!.figure[figArr[i]].color
-                                self.rectanglesArray[rectArr[i]].box.backgroundColor = self.selectedFigure!.figure[figArr[i]].color
-                                self.selectedFigure!.figure[figArr[i]].box.removeFromSuperview()
+                            if localSF != nil {
+                                self.rectanglesArray[rectArr[i]].color = localSF!.figure[figArr[i]].color
+                                self.rectanglesArray[rectArr[i]].box.backgroundColor = localSF!.figure[figArr[i]].color
+                                localSF!.figure[figArr[i]].box.removeFromSuperview()
                                 self.round_score++
                             }
                         }
                         
                         for (index, i) in enumerate(self.figuresArray) {
-                            if i===self.selectedFigure {
+                            if i===localSF {
                                 self.figuresArray.removeAtIndex(index)
                                 // ПРОВЕРЯЕМ ЕСЛИ ФИГУР НЕ ОСТАЛОСЬ ТО СОЗДАЕМ НОВЫЕ ФИГУРЫ
                                 if self.figuresArray.count == 0 {
@@ -197,7 +184,7 @@ class ViewController: UIViewController, ADBannerViewDelegate {
                             }
                         }
                         self.breakLines(rectArr)
-                    
+                        
                         var game_ended = true
                         
                         for i in self.figuresArray {
@@ -216,7 +203,7 @@ class ViewController: UIViewController, ADBannerViewDelegate {
                             self.showMenu(self.score)
                         }
                         
-                        self.selectedFigure = nil
+//                        self.selectedFigure = nil
                         rectArr.removeAll(keepCapacity: true)
                         figArr.removeAll(keepCapacity: true)
 
@@ -304,10 +291,13 @@ class ViewController: UIViewController, ADBannerViewDelegate {
         rectsForDissapear = []
         
         if score_multiplier != 0 {
+            showRoundScore((round_score * score_multiplier) + (score_multiplier * 10) + ((score_multiplier-1) * 10), position: figureEndCoords)
             score = score + (round_score * score_multiplier) + (score_multiplier * 10) + ((score_multiplier-1) * 10)
         } else {
+            showRoundScore(round_score, position: figureEndCoords)
             score = score + round_score
         }
+        showRank(score)
         setScore(score)
         round_score = 0
         score_multiplier = 0
@@ -362,13 +352,19 @@ class ViewController: UIViewController, ADBannerViewDelegate {
             
             figuresArray.append(fig)
         }
-//        var endDate = NSDate()
-//        var exec_time = endDate.timeIntervalSinceDate(date)
-//        println("generateFigures \(exec_time)")
     }
     
     func setScore(score : Int) {
         pointsLabel.text = String(score)
+        UIView.animateWithDuration(0.1, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: nil, animations: {
+            self.pointsLabel.transform = CGAffineTransformMakeScale(1.3, 1.3)
+            self.pointsLabel.frame.origin.x -= 15
+            }, completion: { _ in
+                UIView.animateWithDuration(0.1, animations: {
+                    self.pointsLabel.transform = CGAffineTransformIdentity
+                    self.pointsLabel.frame.origin.x += 15
+                })
+        })
     }
     
     
@@ -440,9 +436,10 @@ class ViewController: UIViewController, ADBannerViewDelegate {
     func showMenu(score : Int) {
         blurView!.frame = CGRect(x: 0, y: 0, width: gameView!.frame.width, height: gameView!.frame.height)
         gameView!.addSubview(blurView!)
+        lastShowedRank.removeFromSuperview()
         endGameViewLabel!.text = score != 0 ? "Your score: " + String(score) : "Hello"
         
-        UIView.animateWithDuration(0.6, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.1, options: nil, animations: {
+        UIView.animateWithDuration(0.6, delay: 0.2, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.1, options: nil, animations: {
             self.endGameView.center = CGPoint(x: self.view.center.x, y: self.view.center.y)
 //            self.endGameView.center = CGPoint(x: self.view.center.x, y: 20)
         }, completion: nil)
@@ -461,9 +458,9 @@ class ViewController: UIViewController, ADBannerViewDelegate {
         endGame()
         hideMenu()
         // POINTS LABEL
-        pointsLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 320, height: 50))
-        pointsLabel.center = CGPoint(x: 160, y: 25)
-        pointsLabel.textAlignment = NSTextAlignment.Center
+        pointsLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 50))
+        pointsLabel.center = CGPoint(x: 255, y: 25)
+        pointsLabel.textAlignment = NSTextAlignment.Right
         pointsLabel.font = UIFont(name: "HelveticaNeue-CondensedBlack", size: 20)
         pointsLabel.text = String(0)
         gameView!.addSubview(pointsLabel)
@@ -480,6 +477,8 @@ class ViewController: UIViewController, ADBannerViewDelegate {
         
         // GENERATE FIGURE
         generateFigures()
+        
+        showRank(0)
     }
     
     func endGame() {
@@ -494,6 +493,126 @@ class ViewController: UIViewController, ADBannerViewDelegate {
         for i in 0...99 {
             clearNumbers.append(i)
         }
+        rank = -1
+    }
+    
+    func showRank(score : Int) {
+        
+        var showNewRank = false
+        let x_offset = 110
+        
+        for var i = 0; i < Ranks.count - 1; i++ {
+            let this = Ranks[i][0] as Int
+            let next = Ranks[i+1][0] as Int
+            if (score >= this) && (score < next) {
+                if rank != i {
+                    showNewRank = true
+                    rank++
+                    break
+                }
+            }
+        }
+        
+        if showNewRank {
+            let str = Ranks[rank][1] as? String
+            let str_l = countElements(str!)
+            let rs = 40 + str_l * 10
+            
+            rankView = UIView(frame: CGRect(x: 10, y: -40, width: 0, height: 35))
+            rankView.backgroundColor = UIColor(rgb: 0xFFFFFF)
+            rankView.layer.cornerRadius = 4
+            rankView.layer.borderWidth = 1
+            rankView.layer.borderColor = UIColor(rgb: 0xd5d5d5).CGColor
+            rankView.clipsToBounds = true
+            
+            view.addSubview(rankView)
+            var iv =  UIImageView(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
+            iv.center = CGPoint(x: 17.5, y: rankView.frame.height/2)
+            var viewpic = CGImageCreateWithImageInRect(UIImage(named: "ranks.png").CGImage, CGRect(x: x_offset * rank, y: 0, width: 110, height: 110))
+            iv.image = UIImage(CGImage: viewpic)
+            rankView.addSubview(iv)
+            
+            var label = UILabel(frame: CGRect(x: 35, y: 0, width: 0, height: 35))
+            label.text = Ranks[rank][1] as? String
+            let rect = label.attributedText?.boundingRectWithSize(CGSize(width: 9999, height: 35), options: .UsesLineFragmentOrigin, context: nil)
+            label.center.y = rankView.frame.height/2
+//            var frame = label.frame
+            label.frame.size.width = rect!.size.width
+//            label.frame = frame
+            rankView.addSubview(label)
+            
+            let finalSize = label.frame.width + 40
+            
+            rankView.frame.size.width = finalSize
+            
+            UIView.animateWithDuration(0.3, delay: 0.3, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: nil, animations: {
+                self.rankView.frame.origin.y = 10
+                }, completion: { _ in
+                    
+            })
+            UIView.animateKeyframesWithDuration(0.3, delay: 0, options: nil, animations: {
+                self.lastShowedRank.frame.origin.x = -200
+                }, completion: {
+                    _ in
+                    self.lastShowedRank.removeFromSuperview()
+                    self.lastShowedRank = self.rankView
+            })
+            
+        }
+    }
+    
+    func showRoundScore(score : Int, position : CGPoint) {
+        var color : UIColor = UIColor()
+        switch score {
+        case 1...30:
+            color = UIColor(rgb: 0x27ae60)
+        case 30...80:
+            color = UIColor(rgb: 0x2980b9)
+        case 80...999:
+            color = UIColor(rgb: 0x8e44ad)
+        default:
+            color = UIColor(rgb: 0x2c3e50)
+        }
+        var scv = UILabel(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        scv.center = position
+        scv.textAlignment = NSTextAlignment.Center
+        scv.text = "+\(score)"
+        scv.font = UIFont(name: "HelveticaNeue-CondensedBlack", size: 30)
+        scv.textColor = color
+        view.addSubview(scv)
+        UIView.animateKeyframesWithDuration(0.7, delay: 0.1, options: nil, animations: {
+            scv.center.y -= 40
+            scv.alpha = 0
+            }, completion: { _ in
+                scv.removeFromSuperview()
+        })
+    }
+    
+    func menuInit() {
+        endGameView = UIView(frame: CGRect(x: 0, y: 0, width: 250, height: 150))
+        endGameView.center = CGPoint(x: view.center.x, y: -400)
+        endGameView.backgroundColor = UIColor(rgb: 0xFFFFFF)
+        endGameView.layer.shadowColor = UIColor.blackColor().CGColor
+        endGameView.layer.shadowOpacity = 0.3
+        endGameView.layer.shadowOffset = CGSize(width: 1, height: 3)
+        
+        // добавляем надпись
+        endGameViewLabel = UILabel(frame: CGRect(x: 0, y: 0, width: endGameView.frame.width, height: 40))
+        endGameViewLabel!.font = UIFont(name: "HelveticaNeue-CondensedBlack", size: 20)
+        endGameViewLabel!.text = "Menu"
+        endGameViewLabel!.backgroundColor = UIColor.brownColor()
+        endGameViewLabel!.textAlignment = NSTextAlignment.Center
+        endGameView.addSubview(endGameViewLabel!)
+        
+        // добавляем кнопку
+        endGameViewButton = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 40))
+        endGameViewButton!.backgroundColor = UIColor(rgb: 0xD6D6D6)
+        endGameViewButton!.setTitle("New Game", forState: UIControlState.Normal)
+        endGameViewButton!.addTarget(self, action: "startGame", forControlEvents: UIControlEvents.TouchUpInside)
+        endGameViewButton!.center = CGPoint(x: endGameView.frame.size.width/2, y: 100)
+        endGameView.addSubview(endGameViewButton!)
+        
+        view.addSubview(endGameView)
     }
     
     func bannerViewDidLoadAd(banner: ADBannerView!) {

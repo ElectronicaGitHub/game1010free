@@ -11,6 +11,8 @@
 		D400CA241A0288E200044BDC /* figures_for_test.swift in Sources */ = {isa = PBXBuildFile; fileRef = D400CA231A0288E200044BDC /* figures_for_test.swift */; };
 		D4276B561A03A22000E62857 /* RectangleClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4276B551A03A22000E62857 /* RectangleClass.swift */; };
 		D4276B581A03A26700E62857 /* FigureClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4276B571A03A26700E62857 /* FigureClass.swift */; };
+		D43251E31A0D12970056EF03 /* Ranks.swift in Sources */ = {isa = PBXBuildFile; fileRef = D43251E21A0D12970056EF03 /* Ranks.swift */; };
+		D43251E71A0D311E0056EF03 /* ranks.png in Resources */ = {isa = PBXBuildFile; fileRef = D43251E61A0D311E0056EF03 /* ranks.png */; };
 		D4F0B43519FA8759000000F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F0B43419FA8759000000F0 /* AppDelegate.swift */; };
 		D4F0B43719FA8759000000F0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F0B43619FA8759000000F0 /* ViewController.swift */; };
 		D4F0B43A19FA8759000000F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4F0B43819FA8759000000F0 /* Main.storyboard */; };
@@ -35,6 +37,8 @@
 		D400CA231A0288E200044BDC /* figures_for_test.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = figures_for_test.swift; sourceTree = "<group>"; };
 		D4276B551A03A22000E62857 /* RectangleClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RectangleClass.swift; sourceTree = "<group>"; };
 		D4276B571A03A26700E62857 /* FigureClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FigureClass.swift; sourceTree = "<group>"; };
+		D43251E21A0D12970056EF03 /* Ranks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ranks.swift; sourceTree = "<group>"; };
+		D43251E61A0D311E0056EF03 /* ranks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ranks.png; path = ../../../ranks.png; sourceTree = "<group>"; };
 		D4F0B42F19FA8759000000F0 /* game1010free.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = game1010free.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4F0B43319FA8759000000F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4F0B43419FA8759000000F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +97,7 @@
 				D4F0B43619FA8759000000F0 /* ViewController.swift */,
 				D4F0B45419FB0BA0000000F0 /* figures.swift */,
 				D4276B551A03A22000E62857 /* RectangleClass.swift */,
+				D43251E21A0D12970056EF03 /* Ranks.swift */,
 				D4276B571A03A26700E62857 /* FigureClass.swift */,
 				D400CA231A0288E200044BDC /* figures_for_test.swift */,
 				D4F0B43819FA8759000000F0 /* Main.storyboard */,
@@ -106,6 +111,7 @@
 		D4F0B43219FA8759000000F0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D43251E61A0D311E0056EF03 /* ranks.png */,
 				D4F0B43319FA8759000000F0 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -211,6 +217,7 @@
 				D4F0B43A19FA8759000000F0 /* Main.storyboard in Resources */,
 				D4F0B43F19FA8759000000F0 /* LaunchScreen.xib in Resources */,
 				D4F0B43C19FA8759000000F0 /* Images.xcassets in Resources */,
+				D43251E71A0D311E0056EF03 /* ranks.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -230,6 +237,7 @@
 			files = (
 				D4276B561A03A22000E62857 /* RectangleClass.swift in Sources */,
 				D4F0B43719FA8759000000F0 /* ViewController.swift in Sources */,
+				D43251E31A0D12970056EF03 /* Ranks.swift in Sources */,
 				D4276B581A03A26700E62857 /* FigureClass.swift in Sources */,
 				D4F0B45519FB0BA0000000F0 /* figures.swift in Sources */,
 				D4F0B43519FA8759000000F0 /* AppDelegate.swift in Sources */,
