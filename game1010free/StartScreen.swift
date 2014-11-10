@@ -17,9 +17,6 @@ class StartScreen {
         
         var rank = uh["rank"] as Int
         var score = uh["score"] as Int
-//        var rank = 0
-//        var score = "0"
-        println(uh)
         
         startScreenWrapper = UIView(frame: CGRectMake(0, 0, view.frame.width, view.frame.height))
         startScreenWrapper.backgroundColor = UIColor.whiteColor()
@@ -67,7 +64,7 @@ class StartScreen {
         var scoreLabel = UILabel(frame: CGRect(x: 0, y: 0, width: startScreenView.frame.width, height: 30))
         scoreLabel.frame.origin.y = 240
         scoreLabel.font = UIFont(name: "HelveticaNeue-CondensedBlack", size: 20)
-        scoreLabel.text = "Maximum Score"
+        scoreLabel.text = "Top Score"
         scoreLabel.textAlignment = NSTextAlignment.Center
         startScreenView.addSubview(scoreLabel)
         

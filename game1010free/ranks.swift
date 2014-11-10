@@ -1,12 +1,12 @@
 import Foundation
 
 var Ranks = [
-    [ 0, "Trainee" ],
-    [ 100, "Newbie" ],
+    [ 0, "Newbie" ],
+    [ 100, "Trainee" ],
     [ 200, "Rookie" ],
     [ 300, "Smarty" ],
     [ 500, "Half Thousander" ],
-    [ 750, "Blocks's Disaster" ],
+    [ 750, "Blocks' Disaster" ],
     [ 1000, "Thousandero" ],
     [ 1300, "Little Genius" ],
     [ 1450, "Silent Stacker" ],

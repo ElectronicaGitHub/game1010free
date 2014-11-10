@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D4F0B42E19FA8759000000F0"
-               BuildableName = "game1010free.app"
-               BlueprintName = "game1010free"
-               ReferencedContainer = "container:game1010free.xcodeproj">
+               BuildableName = "Block2Block.app"
+               BlueprintName = "Block2Block"
+               ReferencedContainer = "container:Block2Block.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D4F0B44319FA8759000000F0"
-               BuildableName = "game1010freeTests.xctest"
-               BlueprintName = "game1010freeTests"
-               ReferencedContainer = "container:game1010free.xcodeproj">
+               BuildableName = "Block2BlockTests.xctest"
+               BlueprintName = "Block2BlockTests"
+               ReferencedContainer = "container:Block2Block.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D4F0B44319FA8759000000F0"
-               BuildableName = "game1010freeTests.xctest"
-               BlueprintName = "game1010freeTests"
-               ReferencedContainer = "container:game1010free.xcodeproj">
+               BuildableName = "Block2BlockTests.xctest"
+               BlueprintName = "Block2BlockTests"
+               ReferencedContainer = "container:Block2Block.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D4F0B42E19FA8759000000F0"
-            BuildableName = "game1010free.app"
-            BlueprintName = "game1010free"
-            ReferencedContainer = "container:game1010free.xcodeproj">
+            BuildableName = "Block2Block.app"
+            BlueprintName = "Block2Block"
+            ReferencedContainer = "container:Block2Block.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -76,9 +76,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D4F0B42E19FA8759000000F0"
-            BuildableName = "game1010free.app"
-            BlueprintName = "game1010free"
-            ReferencedContainer = "container:game1010free.xcodeproj">
+            BuildableName = "Block2Block.app"
+            BlueprintName = "Block2Block"
+            ReferencedContainer = "container:Block2Block.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -94,9 +94,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D4F0B42E19FA8759000000F0"
-            BuildableName = "game1010free.app"
-            BlueprintName = "game1010free"
-            ReferencedContainer = "container:game1010free.xcodeproj">
+            BuildableName = "Block2Block.app"
+            BlueprintName = "Block2Block"
+            ReferencedContainer = "container:Block2Block.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

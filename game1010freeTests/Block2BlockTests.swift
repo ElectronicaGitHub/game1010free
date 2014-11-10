@@ -9,7 +9,7 @@
 import UIKit
 import XCTest
 
-class game1010freeTests: XCTestCase {
+class Block2BlockTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

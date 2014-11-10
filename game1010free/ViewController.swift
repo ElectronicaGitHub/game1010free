@@ -10,6 +10,8 @@ var lastShowedRank = UIView()
 var menu : Menu?
 var udKey = "b2bhighscores"
 var userHighscores : AnyObject?
+var maxScore : Int? = Int()
+var highScoreReached : Bool = false
 
 class ViewController: UIViewController, ADBannerViewDelegate {
     @IBOutlet weak var adBanner: ADBannerView!
@@ -42,12 +44,15 @@ class ViewController: UIViewController, ADBannerViewDelegate {
         var ud = NSUserDefaults.standardUserDefaults()
         if let i : AnyObject = ud.objectForKey(udKey) {
             userHighscores = i as NSDictionary
-            println("\(userHighscores)")
+            maxScore = userHighscores!["score"] as? Int
+            println(maxScore)
         } else {
             userHighscores = [
                 "score" : 0,
                 "rank" : 0
             ]
+            maxScore = nil
+            highScoreReached = true
         }
         
         // init menu classes
@@ -165,6 +170,7 @@ class ViewController: UIViewController, ADBannerViewDelegate {
             
             if modified == selectedFigure?.figure.count {
                 // ФИГУРА ПОПАЛА
+                
                 let localSF = selectedFigure
                 selectedFigure = nil
                 figureEndCoords = localSF!.figureView.center
@@ -217,16 +223,20 @@ class ViewController: UIViewController, ADBannerViewDelegate {
                         if game_ended == true {
                             println("игра закончена нахуй")
                             
-                            var data : NSDictionary = [
-                                "score" : self.score,
-                                "rank" : self.rank
-                            ]
-                            NSUserDefaults.standardUserDefaults().setObject(data, forKey: udKey)
+                            if self.score > maxScore {
+                                var data : NSDictionary = [
+                                    "score" : self.score,
+                                    "rank" : self.rank
+                                ]
+                                NSUserDefaults.standardUserDefaults().setObject(data, forKey: udKey)
+                                maxScore = self.score
+                            }
                             
                             for i in self.figuresArray {
                                 i.figureView.removeFromSuperview()
                             }
                             menu!.showMenu(self.score, rank: self.rank)
+                            self.endGame()
                         }
                         
 //                        self.selectedFigure = nil
@@ -323,6 +333,16 @@ class ViewController: UIViewController, ADBannerViewDelegate {
             showRoundScore(round_score, position: figureEndCoords)
             score = score + round_score
         }
+        
+        // HIGHSCORE ПРОВЕРКА
+        
+        if highScoreReached == false {
+            if score > maxScore {
+                newHighscore()
+                highScoreReached = true
+            }
+        }
+        
         showRank(score)
         setScore(score)
         round_score = 0
@@ -460,7 +480,7 @@ class ViewController: UIViewController, ADBannerViewDelegate {
     }
     
     func startGame() {
-        endGame()
+//        endGame()
         menu!.hideMenu()
         startScreen!.hideStartScreen()
         // POINTS LABEL
@@ -500,6 +520,7 @@ class ViewController: UIViewController, ADBannerViewDelegate {
             clearNumbers.append(i)
         }
         rank = -1
+        highScoreReached = false
     }
     
     func showRank(score : Int) {
@@ -581,7 +602,9 @@ class ViewController: UIViewController, ADBannerViewDelegate {
         var scv = UILabel(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         scv.center = position
         scv.textAlignment = NSTextAlignment.Center
-        scv.text = "+\(score)"
+        let str = "+" + String(score)
+//        scv.text = "+\(score)"
+        scv.text = str
         scv.font = UIFont(name: "HelveticaNeue-CondensedBlack", size: 30)
         scv.textColor = color
         view.addSubview(scv)
@@ -590,6 +613,38 @@ class ViewController: UIViewController, ADBannerViewDelegate {
             scv.alpha = 0
             }, completion: { _ in
                 scv.removeFromSuperview()
+        })
+    }
+    
+    func newHighscore() {
+        var nhs = UIView(frame: CGRect(x: 0, y: 0, width: 200, height: 40))
+        nhs.center.x = view.center.x
+        nhs.backgroundColor = UIColor.whiteColor()
+        nhs.frame.origin.y = -100
+        nhs.layer.borderWidth = 1
+        nhs.layer.borderColor = UIColor(rgb: 0xd7d7d7).CGColor
+        nhs.layer.cornerRadius = 5
+        nhs.layer.shadowColor = UIColor.blackColor().CGColor
+        nhs.layer.shadowOpacity = 0.3
+        nhs.layer.shadowOffset = CGSize(width: 1, height: 3)
+        
+        var l = UILabel(frame: CGRect(x: 0, y: 0, width: nhs.frame.width, height: nhs.frame.height))
+        l.text = "New Highscore"
+        l.textAlignment = NSTextAlignment.Center
+        l.font = UIFont(name: "HelveticaNeue-CondensedBlack", size: 20)
+        
+        nhs.addSubview(l)
+        
+        view.addSubview(nhs)
+        
+        UIView.animateWithDuration(0.4, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 1, options: nil, animations: {
+            nhs.frame.origin.y = 20
+            }, completion: {
+                _ in
+                UIView.animateWithDuration(0.3, delay: 0.3, options : nil, animations: {
+                    nhs.frame.origin.y = -100
+                }, completion: nil)
+                
         })
     }
     
