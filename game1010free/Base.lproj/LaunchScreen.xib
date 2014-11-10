@@ -12,7 +12,12 @@
             <subviews>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SIg-tE-Xfz">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                    <color key="backgroundColor" red="0.047058828179999998" green="0.13333334029999999" blue="0.03529411927" alpha="1" colorSpace="deviceRGB"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="block2blocklogoimage.png" translatesAutoresizingMaskIntoConstraints="NO" id="ISG-E9-RU9">
+                            <rect key="frame" x="57" y="171" width="207" height="225"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -22,4 +27,7 @@
             <point key="canvasLocation" x="548" y="455"/>
         </view>
     </objects>
+    <resources>
+        <image name="block2blocklogoimage.png" width="600" height="600"/>
+    </resources>
 </document>
