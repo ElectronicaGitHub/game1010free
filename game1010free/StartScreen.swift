@@ -6,11 +6,20 @@ var startScreenWrapper : UIView = UIView()
 class StartScreen {
     var view : UIView
     var _self : UIViewController
+    var uh : NSDictionary
     init(view : UIView, _self : UIViewController) {
+        
+        self.uh = userHighscores as NSDictionary
         self.view = view
         self._self = _self
     }
     func startScreenInit() {
+        
+        var rank = uh["rank"] as Int
+        var score = uh["score"] as Int
+//        var rank = 0
+//        var score = "0"
+        println(uh)
         
         startScreenWrapper = UIView(frame: CGRectMake(0, 0, view.frame.width, view.frame.height))
         startScreenWrapper.backgroundColor = UIColor.whiteColor()
@@ -38,12 +47,12 @@ class StartScreen {
         
         var rp = UIImageView(frame: CGRect(x: 0, y: 0, width: 110, height: 110))
         rp.center = CGPoint(x: startScreenView.frame.width/2, y: 140)
-        var image = CGImageCreateWithImageInRect(UIImage(named: "ranks.png").CGImage, CGRect(x: 0, y: 0, width: 220, height: 220))
+        var image = CGImageCreateWithImageInRect(UIImage(named: "ranks.png").CGImage, CGRect(x: 220 * rank, y: 0, width: 220, height: 220))
         rp.image = UIImage(CGImage: image)
         startScreenView.addSubview(rp)
         
         var rn = UILabel(frame: CGRect(x: 0, y: 0, width: startScreenView.frame.width, height: 30))
-        rn.text = Ranks[4][1] as? String
+        rn.text = Ranks[rank][1] as? String
         rn.frame.origin.y = 200
         rn.textAlignment = NSTextAlignment.Center
         rn.font = UIFont(name: "HelveticaNeue-CondensedBlack", size: 20)
@@ -63,7 +72,7 @@ class StartScreen {
         startScreenView.addSubview(scoreLabel)
         
         var scoreNumber = UILabel(frame: CGRect(x: 0, y: 0, width: startScreenView.frame.width, height: 40))
-        scoreNumber.text = String(995)
+        scoreNumber.text = String(score)
         scoreNumber.frame.origin.y = 270
         scoreNumber.textAlignment = NSTextAlignment.Center
         scoreNumber.font = UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)
@@ -71,7 +80,7 @@ class StartScreen {
         
         // добавляем кнопку
         var button = UIButton(frame: CGRect(x: 0, y: 0, width: startScreenView.frame.width, height: 40))
-        button.backgroundColor = UIColor(rgb: 0x7C82E8)
+        button.backgroundColor = UIColor(rgb: 0x29ABE2)
         button.setTitle("PLAY", forState: UIControlState.Normal)
         button.titleLabel!.font = UIFont(name: "HelveticaNeue-CondensedBlack", size: 20)
         button.addTarget(_self, action: "startGame", forControlEvents: UIControlEvents.TouchUpInside)

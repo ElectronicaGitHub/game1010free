@@ -8,6 +8,8 @@ var blurView : UIVisualEffectView?
 var gameView : UIView?
 var lastShowedRank = UIView()
 var menu : Menu?
+var udKey = "b2bhighscores"
+var userHighscores : AnyObject?
 
 class ViewController: UIViewController, ADBannerViewDelegate {
     @IBOutlet weak var adBanner: ADBannerView!
@@ -36,6 +38,17 @@ class ViewController: UIViewController, ADBannerViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        var ud = NSUserDefaults.standardUserDefaults()
+        if let i : AnyObject = ud.objectForKey(udKey) {
+            userHighscores = i as NSDictionary
+            println("\(userHighscores)")
+        } else {
+            userHighscores = [
+                "score" : 0,
+                "rank" : 0
+            ]
+        }
         
         // init menu classes
         menu = Menu(view: view, _self: self)
@@ -203,6 +216,13 @@ class ViewController: UIViewController, ADBannerViewDelegate {
                         
                         if game_ended == true {
                             println("игра закончена нахуй")
+                            
+                            var data : NSDictionary = [
+                                "score" : self.score,
+                                "rank" : self.rank
+                            ]
+                            NSUserDefaults.standardUserDefaults().setObject(data, forKey: udKey)
+                            
                             for i in self.figuresArray {
                                 i.figureView.removeFromSuperview()
                             }

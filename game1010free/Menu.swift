@@ -68,7 +68,7 @@ public class Menu {
         
         // добавляем кнопку
         endGameViewButton = UIButton(frame: CGRect(x: 0, y: 0, width: endGameView.frame.width, height: 40))
-        endGameViewButton!.backgroundColor = UIColor(rgb: 0x7C82E8)
+        endGameViewButton!.backgroundColor = UIColor(rgb: 0x29ABE2)
         endGameViewButton!.setTitle("PLAY AGAIN", forState: UIControlState.Normal)
         endGameViewButton!.titleLabel!.font = UIFont(name: "HelveticaNeue-CondensedBlack", size: 20)
         endGameViewButton!.addTarget(_self, action: "startGame", forControlEvents: UIControlEvents.TouchUpInside)
