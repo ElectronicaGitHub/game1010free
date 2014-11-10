@@ -1,9 +1,13 @@
 import UIKit
 import iAd
 
- let padding : CGFloat = 2;
- let size : CGFloat = 28;
- let map_size = 10;
+let padding : CGFloat = 2;
+let size : CGFloat = 28;
+let map_size = 10;
+var blurView : UIVisualEffectView?
+var gameView : UIView?
+var lastShowedRank = UIView()
+var menu : Menu?
 
 class ViewController: UIViewController, ADBannerViewDelegate {
     @IBOutlet weak var adBanner: ADBannerView!
@@ -17,25 +21,25 @@ class ViewController: UIViewController, ADBannerViewDelegate {
     var round_score = 0
     var score_multiplier = 0
     var pointsLabel : UILabel = UILabel()
-    var endGameView : UIView = UIView()
     var figures_for_test_inited : figures_for_test = figures_for_test()
     // DIMENSIONS
     let rectsHeight = 50
     let figuresHeight = 435
-    var gameView : UIView?
-    var blurView : UIVisualEffectView?
-    var endGameViewLabel : UILabel?
-    var endGameViewButton : UIButton?
     var rectsForDissapear = Array<Dictionary<String,Any>>()
     var clearNumbers = Array<Int>()
     var figureEndCoords : CGPoint = CGPoint()
     var rank = -1
     var maxRank = Ranks.count - 1
-    var lastShowedRank = UIView()
     var rankView = UIView()
+    
+    var startScreen : StartScreen?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // init menu classes
+        menu = Menu(view: view, _self: self)
+        startScreen = StartScreen(view: view, _self: self)
         
         // НАПОЛНЯЕМ МАССИВ СВОБОДНЫХ ЭЛЕМЕНТОВ
         
@@ -59,8 +63,10 @@ class ViewController: UIViewController, ADBannerViewDelegate {
         self.adBanner.hidden = true
         
         // MENU ADD
-        menuInit()
-        showMenu(score)
+//        menuInit(view, self)
+        menu!.menuInit()
+        startScreen!.startScreenInit()
+//        menu!.showMenu(score, rank:rank)
     }
 
     override func didReceiveMemoryWarning() {
@@ -200,7 +206,7 @@ class ViewController: UIViewController, ADBannerViewDelegate {
                             for i in self.figuresArray {
                                 i.figureView.removeFromSuperview()
                             }
-                            self.showMenu(self.score)
+                            menu!.showMenu(self.score, rank: self.rank)
                         }
                         
 //                        self.selectedFigure = nil
@@ -433,30 +439,10 @@ class ViewController: UIViewController, ADBannerViewDelegate {
         return false
     }
     
-    func showMenu(score : Int) {
-        blurView!.frame = CGRect(x: 0, y: 0, width: gameView!.frame.width, height: gameView!.frame.height)
-        gameView!.addSubview(blurView!)
-        lastShowedRank.removeFromSuperview()
-        endGameViewLabel!.text = score != 0 ? "Your score: " + String(score) : "Hello"
-        
-        UIView.animateWithDuration(0.6, delay: 0.2, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.1, options: nil, animations: {
-            self.endGameView.center = CGPoint(x: self.view.center.x, y: self.view.center.y)
-//            self.endGameView.center = CGPoint(x: self.view.center.x, y: 20)
-        }, completion: nil)
-    }
-    
-    func hideMenu() {
-        
-        blurView!.removeFromSuperview()
-        
-        UIView.animateWithDuration(1, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.1, options: nil, animations: {
-            self.endGameView.center = CGPoint(x: self.view.center.x, y: -200)
-        }, completion: nil)
-    }
-    
     func startGame() {
         endGame()
-        hideMenu()
+        menu!.hideMenu()
+        startScreen!.hideStartScreen()
         // POINTS LABEL
         pointsLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 50))
         pointsLabel.center = CGPoint(x: 255, y: 25)
@@ -499,7 +485,7 @@ class ViewController: UIViewController, ADBannerViewDelegate {
     func showRank(score : Int) {
         
         var showNewRank = false
-        let x_offset = 110
+        let x_offset = 220
         
         for var i = 0; i < Ranks.count - 1; i++ {
             let this = Ranks[i][0] as Int
@@ -528,17 +514,16 @@ class ViewController: UIViewController, ADBannerViewDelegate {
             view.addSubview(rankView)
             var iv =  UIImageView(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
             iv.center = CGPoint(x: 17.5, y: rankView.frame.height/2)
-            var viewpic = CGImageCreateWithImageInRect(UIImage(named: "ranks.png").CGImage, CGRect(x: x_offset * rank, y: 0, width: 110, height: 110))
+            var viewpic = CGImageCreateWithImageInRect(UIImage(named: "ranks.png").CGImage, CGRect(x: x_offset * rank, y: 0, width: 220, height: 220))
             iv.image = UIImage(CGImage: viewpic)
             rankView.addSubview(iv)
             
             var label = UILabel(frame: CGRect(x: 35, y: 0, width: 0, height: 35))
             label.text = Ranks[rank][1] as? String
+            label.font = UIFont(name: "HelveticaNeue-CondensedBlack", size: 20)
             let rect = label.attributedText?.boundingRectWithSize(CGSize(width: 9999, height: 35), options: .UsesLineFragmentOrigin, context: nil)
             label.center.y = rankView.frame.height/2
-//            var frame = label.frame
             label.frame.size.width = rect!.size.width
-//            label.frame = frame
             rankView.addSubview(label)
             
             let finalSize = label.frame.width + 40
@@ -551,11 +536,11 @@ class ViewController: UIViewController, ADBannerViewDelegate {
                     
             })
             UIView.animateKeyframesWithDuration(0.3, delay: 0, options: nil, animations: {
-                self.lastShowedRank.frame.origin.x = -200
+                lastShowedRank.frame.origin.x = -200
                 }, completion: {
                     _ in
-                    self.lastShowedRank.removeFromSuperview()
-                    self.lastShowedRank = self.rankView
+                    lastShowedRank.removeFromSuperview()
+                    lastShowedRank = self.rankView
             })
             
         }
@@ -586,33 +571,6 @@ class ViewController: UIViewController, ADBannerViewDelegate {
             }, completion: { _ in
                 scv.removeFromSuperview()
         })
-    }
-    
-    func menuInit() {
-        endGameView = UIView(frame: CGRect(x: 0, y: 0, width: 250, height: 150))
-        endGameView.center = CGPoint(x: view.center.x, y: -400)
-        endGameView.backgroundColor = UIColor(rgb: 0xFFFFFF)
-        endGameView.layer.shadowColor = UIColor.blackColor().CGColor
-        endGameView.layer.shadowOpacity = 0.3
-        endGameView.layer.shadowOffset = CGSize(width: 1, height: 3)
-        
-        // добавляем надпись
-        endGameViewLabel = UILabel(frame: CGRect(x: 0, y: 0, width: endGameView.frame.width, height: 40))
-        endGameViewLabel!.font = UIFont(name: "HelveticaNeue-CondensedBlack", size: 20)
-        endGameViewLabel!.text = "Menu"
-        endGameViewLabel!.backgroundColor = UIColor.brownColor()
-        endGameViewLabel!.textAlignment = NSTextAlignment.Center
-        endGameView.addSubview(endGameViewLabel!)
-        
-        // добавляем кнопку
-        endGameViewButton = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 40))
-        endGameViewButton!.backgroundColor = UIColor(rgb: 0xD6D6D6)
-        endGameViewButton!.setTitle("New Game", forState: UIControlState.Normal)
-        endGameViewButton!.addTarget(self, action: "startGame", forControlEvents: UIControlEvents.TouchUpInside)
-        endGameViewButton!.center = CGPoint(x: endGameView.frame.size.width/2, y: 100)
-        endGameView.addSubview(endGameViewButton!)
-        
-        view.addSubview(endGameView)
     }
     
     func bannerViewDidLoadAd(banner: ADBannerView!) {
