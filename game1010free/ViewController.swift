@@ -406,7 +406,8 @@ class ViewController: UIViewController, ADBannerViewDelegate {
                              type: figures_map.maps[figNumber]["type"] as String,
                              start_w_offset : figures_map.maps[figNumber]["start_w"] as? Int
             )
-            figureView.center = CGPoint(x: figuresPositions[i], y: CGFloat(figuresHeight))
+//            figureView.center = CGPoint(x: figuresPositions[i], y: CGFloat(figuresHeight))
+            figureView.center = CGPoint(x: figuresPositions[i], y: CGFloat(figuresHeight + 500))
             view.addSubview(figureView)
             for i in fig.figure {
                 figureView.addSubview(i.box)
@@ -414,6 +415,13 @@ class ViewController: UIViewController, ADBannerViewDelegate {
             figureView.transform = CGAffineTransformMakeScale(figuresScaling, figuresScaling)
             
             figuresArray.append(fig)
+            
+            UIView.animateWithDuration(0.4, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1, options: nil, animations: {
+                for (index,i) in enumerate(self.figuresArray) {
+                    i.figureView.center = CGPoint(x: figuresPositions[index], y: CGFloat(self.figuresHeight))
+
+                }
+                }, completion: nil)
         }
     }
     

@@ -392,11 +392,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "game1010free/ViewController.swift"
-            timestampString = "437351068.72984"
+            timestampString = "437406893.122745"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "517"
-            endingLineNumber = "517"
+            startingLineNumber = "525"
+            endingLineNumber = "525"
             landmarkName = "startGame()"
             landmarkType = "5">
          </BreakpointContent>
@@ -454,11 +454,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "game1010free/ViewController.swift"
-            timestampString = "437351068.72984"
+            timestampString = "437406893.122745"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "602"
-            endingLineNumber = "602"
+            startingLineNumber = "610"
+            endingLineNumber = "610"
             landmarkName = "showRank(_:)"
             landmarkType = "5">
          </BreakpointContent>
