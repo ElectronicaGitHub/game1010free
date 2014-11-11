@@ -239,6 +239,7 @@
 				TargetAttributes = {
 					D4F0B42E19FA8759000000F0 = {
 						CreatedOnToolsVersion = 6.0.1;
+						DevelopmentTeam = 69T6S8B6K4;
 					};
 					D4F0B44319FA8759000000F0 = {
 						CreatedOnToolsVersion = 6.0.1;
@@ -445,6 +446,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = game1010free/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Block2Block;
@@ -455,6 +457,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = game1010free/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Block2Block;

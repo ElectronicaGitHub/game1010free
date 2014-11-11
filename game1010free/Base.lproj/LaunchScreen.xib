@@ -10,7 +10,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SIg-tE-Xfz">
+                <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="SIg-tE-Xfz">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="block2blocklogoimage.png" translatesAutoresizingMaskIntoConstraints="NO" id="ISG-E9-RU9">
@@ -21,6 +21,12 @@
                 </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="SIg-tE-Xfz" secondAttribute="trailing" id="P9U-Dl-hft"/>
+                <constraint firstAttribute="bottom" secondItem="SIg-tE-Xfz" secondAttribute="bottom" id="dGK-vF-EkK"/>
+                <constraint firstItem="SIg-tE-Xfz" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="dzN-4k-c2W"/>
+                <constraint firstItem="SIg-tE-Xfz" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="hYT-TZ-z07"/>
+            </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -28,6 +34,6 @@
         </view>
     </objects>
     <resources>
-        <image name="block2blocklogoimage.png" width="600" height="600"/>
+        <image name="block2blocklogoimage.png" width="713" height="600"/>
     </resources>
 </document>

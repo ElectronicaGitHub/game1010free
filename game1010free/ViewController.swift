@@ -1,8 +1,8 @@
 import UIKit
 import iAd
 
-let padding : CGFloat = 2;
-let size : CGFloat = 28;
+var padding : CGFloat = 2;
+var size : CGFloat = 28;
 let map_size = 10;
 var blurView : UIVisualEffectView?
 var gameView : UIView?
@@ -13,6 +13,8 @@ var userHighscores : AnyObject?
 var maxScore : Int? = Int()
 var highScoreReached : Bool = false
 
+var bounds : CGRect = CGRect()
+
 class ViewController: UIViewController, ADBannerViewDelegate {
     @IBOutlet weak var adBanner: ADBannerView!
     
@@ -20,7 +22,7 @@ class ViewController: UIViewController, ADBannerViewDelegate {
     var rectanglesArray = [Rectangle]()
     var figuresArray = [Figure]()
     let afterTouchYOffset : CGFloat = 70
-    let figuresScaling = (300/3) / ((size + padding) * 5)
+    let figuresScaling = (300/3) / (    (size + padding) * 5)
     var score = 0
     var round_score = 0
     var score_multiplier = 0
@@ -28,7 +30,7 @@ class ViewController: UIViewController, ADBannerViewDelegate {
     var figures_for_test_inited : figures_for_test = figures_for_test()
     // DIMENSIONS
     let rectsHeight = 50
-    let figuresHeight = 435
+    var figuresHeight = 435
     var rectsForDissapear = Array<Dictionary<String,Any>>()
     var clearNumbers = Array<Int>()
     var figureEndCoords : CGPoint = CGPoint()
@@ -40,6 +42,21 @@ class ViewController: UIViewController, ADBannerViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        bounds = UIScreen.mainScreen().bounds
+        println(bounds)
+        if bounds.height == 480 {
+            size = 25
+            figuresHeight = 380
+        } else if bounds.height == 667 {
+            size = 33
+            padding = 3
+            figuresHeight = 520
+        } else if bounds.height == 736 {
+            size = 36
+            padding = 4
+            figuresHeight = 570
+        }
         
         var ud = NSUserDefaults.standardUserDefaults()
         if let i : AnyObject = ud.objectForKey(udKey) {
@@ -485,7 +502,8 @@ class ViewController: UIViewController, ADBannerViewDelegate {
         startScreen!.hideStartScreen()
         // POINTS LABEL
         pointsLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 50))
-        pointsLabel.center = CGPoint(x: 255, y: 25)
+        pointsLabel.frame.origin.x = view.frame.width - 110
+        pointsLabel.frame.origin.y = 0
         pointsLabel.textAlignment = NSTextAlignment.Right
         pointsLabel.font = UIFont(name: "HelveticaNeue-CondensedBlack", size: 20)
         pointsLabel.text = String(0)
