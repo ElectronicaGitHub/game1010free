@@ -144,7 +144,7 @@ class figures {
                 [ "x" : 0, "y" : 0], [ "x" : c, "y" : 0], [ "x" : c, "y" : c]
             ],
             "color" : UIColor(rgb: 0xA9CF54),
-            "w" : 0,
+            "w" : 1,
             "h" : 1,
             "type" : "L"
         ])
@@ -164,7 +164,7 @@ class figures {
                 [ "x" : 0, "y" : 0], [ "x" : 0, "y" : c], [ "x" : c, "y" : 0]
             ],
             "color" : UIColor(rgb: 0x332532),
-            "w" : 1,
+            "w" : 0,
             "h" : 1,
             "start_w" : 1,
             "type" : "L_inv"
