@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "game1010free/ViewController.swift"
-            timestampString = "437351068.72984"
+            timestampString = "437446979.666261"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
+            startingLineNumber = "124"
+            endingLineNumber = "124"
             landmarkName = "didReceiveMemoryWarning()"
             landmarkType = "5">
          </BreakpointContent>
@@ -26,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "game1010free/ViewController.swift"
-            timestampString = "437351068.72984"
+            timestampString = "437486360.839002"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "365"
-            endingLineNumber = "365"
+            startingLineNumber = "379"
+            endingLineNumber = "379"
             landmarkName = "breakLines(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "game1010free/ViewController.swift"
-            timestampString = "437351068.72984"
+            timestampString = "437486360.839002"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "353"
-            endingLineNumber = "353"
+            startingLineNumber = "367"
+            endingLineNumber = "367"
             landmarkName = "breakLines(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "game1010free/ViewController.swift"
-            timestampString = "437351068.72984"
+            timestampString = "437486360.839002"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "345"
-            endingLineNumber = "345"
+            startingLineNumber = "359"
+            endingLineNumber = "359"
             landmarkName = "breakLines(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "game1010free/ViewController.swift"
-            timestampString = "437348160.392576"
+            timestampString = "437444072.646303"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "19"
-            endingLineNumber = "19"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
             landmarkName = "ViewController"
             landmarkType = "3">
             <Locations>
@@ -86,57 +86,71 @@
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "game1010free.ViewController.adBanner.getter : weak Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.ADBannerView&gt;"
-                  moduleName = "game1010free"
+                  symbolName = "Block2Block.ViewController.adBanner.getter : weak Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.ADBannerView&gt;"
+                  moduleName = "Block2Block"
                   urlString = "file:///Users/philip/Documents/IOSDEV/game1010free/game1010free/ViewController.swift"
-                  timestampString = "437304413.815032"
+                  timestampString = "437444883.624432"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
                   endingLineNumber = "0"
-                  offsetFromSymbolStart = "12">
+                  offsetFromSymbolStart = "24">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "game1010free.ViewController.adBanner.setter : weak Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.ADBannerView&gt;"
-                  moduleName = "game1010free"
+                  symbolName = "Block2Block.ViewController.adBanner.setter : weak Swift.ImplicitlyUnwrappedOptional&lt;ObjectiveC.ADBannerView&gt;"
+                  moduleName = "Block2Block"
                   urlString = "file:///Users/philip/Documents/IOSDEV/game1010free/game1010free/ViewController.swift"
-                  timestampString = "437304413.815173"
+                  timestampString = "437444883.624551"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
                   endingLineNumber = "0"
-                  offsetFromSymbolStart = "16">
+                  offsetFromSymbolStart = "28">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "game1010free.ViewController.init (game1010free.ViewController.Type)(nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;ObjectiveC.NSBundle&gt;) -&gt; game1010free.ViewController"
-                  moduleName = "game1010free"
+                  symbolName = "Block2Block.ViewController.init (Block2Block.ViewController.Type)(nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;ObjectiveC.NSBundle&gt;) -&gt; Block2Block.ViewController"
+                  moduleName = "Block2Block"
                   urlString = "file:///Users/philip/Documents/IOSDEV/game1010free/game1010free/ViewController.swift"
-                  timestampString = "437304413.815287"
+                  timestampString = "437444883.624694"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "12"
-                  endingLineNumber = "12"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "36">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Block2Block.ViewController.init (Block2Block.ViewController.Type)() -&gt; Block2Block.ViewController"
+                  moduleName = "Block2Block"
+                  urlString = "file:///Users/philip/Documents/IOSDEV/game1010free/game1010free/ViewController.swift"
+                  timestampString = "437444883.624789"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
                   offsetFromSymbolStart = "32">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "game1010free.ViewController.init (game1010free.ViewController.Type)() -&gt; game1010free.ViewController"
-                  moduleName = "game1010free"
+                  symbolName = "Block2Block.ViewController.init (Block2Block.ViewController.Type)(coder : ObjectiveC.NSCoder) -&gt; Block2Block.ViewController"
+                  moduleName = "Block2Block"
                   urlString = "file:///Users/philip/Documents/IOSDEV/game1010free/game1010free/ViewController.swift"
-                  timestampString = "437304413.8154"
+                  timestampString = "437444883.624879"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "12"
-                  endingLineNumber = "12"
-                  offsetFromSymbolStart = "24">
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "32">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -148,11 +162,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "game1010free/ViewController.swift"
-            timestampString = "437348160.392576"
+            timestampString = "437444072.646303"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "18"
-            endingLineNumber = "18"
+            startingLineNumber = "19"
+            endingLineNumber = "19"
             landmarkName = "ViewController"
             landmarkType = "3">
             <Locations>
@@ -160,29 +174,29 @@
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "game1010free.ViewController.__deallocating_deinit"
-                  moduleName = "game1010free"
+                  symbolName = "Block2Block.ViewController.__deallocating_deinit"
+                  moduleName = "Block2Block"
                   urlString = "file:///Users/philip/Documents/IOSDEV/game1010free/game1010free/ViewController.swift"
-                  timestampString = "437304413.816719"
+                  timestampString = "437444883.62595"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "11"
-                  endingLineNumber = "11"
-                  offsetFromSymbolStart = "12">
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "16">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "@objc game1010free.ViewController.__ivar_destroyer"
-                  moduleName = "game1010free"
+                  symbolName = "@objc Block2Block.ViewController.__ivar_destroyer"
+                  moduleName = "Block2Block"
                   urlString = "file:///Users/philip/Documents/IOSDEV/game1010free/game1010free/ViewController.swift"
-                  timestampString = "437304413.816929"
+                  timestampString = "437444883.626062"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "11"
-                  endingLineNumber = "11"
-                  offsetFromSymbolStart = "15">
+                  startingLineNumber = "19"
+                  endingLineNumber = "19"
+                  offsetFromSymbolStart = "0">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -206,29 +220,29 @@
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "game1010free.figures.deinit"
-                  moduleName = "game1010free"
+                  symbolName = "Block2Block.figures.deinit"
+                  moduleName = "Block2Block"
                   urlString = "file:///Users/philip/Documents/IOSDEV/game1010free/game1010free/figures.swift"
-                  timestampString = "437304413.817774"
+                  timestampString = "437444883.626977"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "14"
                   endingLineNumber = "14"
-                  offsetFromSymbolStart = "12">
+                  offsetFromSymbolStart = "16">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "game1010free.figures.__deallocating_deinit"
-                  moduleName = "game1010free"
+                  symbolName = "Block2Block.figures.__deallocating_deinit"
+                  moduleName = "Block2Block"
                   urlString = "file:///Users/philip/Documents/IOSDEV/game1010free/game1010free/figures.swift"
-                  timestampString = "437304413.817923"
+                  timestampString = "437444883.627091"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "14"
                   endingLineNumber = "14"
-                  offsetFromSymbolStart = "12">
+                  offsetFromSymbolStart = "16">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -240,11 +254,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "game1010free/ViewController.swift"
-            timestampString = "437351068.72984"
+            timestampString = "437446979.666261"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "96"
-            endingLineNumber = "96"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
             landmarkName = "viewDidLoad()"
             landmarkType = "5">
          </BreakpointContent>
@@ -256,11 +270,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "game1010free/ViewController.swift"
-            timestampString = "437348160.392576"
+            timestampString = "437444072.646303"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
+            startingLineNumber = "31"
+            endingLineNumber = "31"
             landmarkName = "ViewController"
             landmarkType = "3">
             <Locations>
@@ -268,24 +282,24 @@
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "game1010free.ViewController.figures_for_test_inited.getter : game1010free.figures_for_test"
-                  moduleName = "game1010free"
+                  symbolName = "Block2Block.ViewController.figures_for_test_inited.getter : Block2Block.figures_for_test"
+                  moduleName = "Block2Block"
                   urlString = "file:///Users/philip/Documents/IOSDEV/game1010free/game1010free/ViewController.swift"
-                  timestampString = "437304413.81864"
+                  timestampString = "437444883.627696"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
                   endingLineNumber = "0"
-                  offsetFromSymbolStart = "12">
+                  offsetFromSymbolStart = "16">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "game1010free.ViewController.figures_for_test_inited.setter : game1010free.figures_for_test"
-                  moduleName = "game1010free"
+                  symbolName = "Block2Block.ViewController.figures_for_test_inited.setter : Block2Block.figures_for_test"
+                  moduleName = "Block2Block"
                   urlString = "file:///Users/philip/Documents/IOSDEV/game1010free/game1010free/ViewController.swift"
-                  timestampString = "437304413.818786"
+                  timestampString = "437444883.627805"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "0"
@@ -296,43 +310,43 @@
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "game1010free.ViewController.init (game1010free.ViewController.Type)(nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;ObjectiveC.NSBundle&gt;) -&gt; game1010free.ViewController"
-                  moduleName = "game1010free"
+                  symbolName = "Block2Block.ViewController.init (Block2Block.ViewController.Type)(nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;ObjectiveC.NSBundle&gt;) -&gt; Block2Block.ViewController"
+                  moduleName = "Block2Block"
                   urlString = "file:///Users/philip/Documents/IOSDEV/game1010free/game1010free/ViewController.swift"
-                  timestampString = "437304413.818903"
+                  timestampString = "437444883.62789"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "24"
-                  endingLineNumber = "24"
-                  offsetFromSymbolStart = "413">
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "420">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "game1010free.ViewController.init (game1010free.ViewController.Type)() -&gt; game1010free.ViewController"
-                  moduleName = "game1010free"
+                  symbolName = "Block2Block.ViewController.init (Block2Block.ViewController.Type)() -&gt; Block2Block.ViewController"
+                  moduleName = "Block2Block"
                   urlString = "file:///Users/philip/Documents/IOSDEV/game1010free/game1010free/ViewController.swift"
-                  timestampString = "437304413.819025"
+                  timestampString = "437444883.627975"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "24"
-                  endingLineNumber = "24"
-                  offsetFromSymbolStart = "341">
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "404">
                </Location>
                <Location
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "game1010free.ViewController.init (game1010free.ViewController.Type)(coder : ObjectiveC.NSCoder) -&gt; game1010free.ViewController"
-                  moduleName = "game1010free"
+                  symbolName = "Block2Block.ViewController.init (Block2Block.ViewController.Type)(coder : ObjectiveC.NSCoder) -&gt; Block2Block.ViewController"
+                  moduleName = "Block2Block"
                   urlString = "file:///Users/philip/Documents/IOSDEV/game1010free/game1010free/ViewController.swift"
-                  timestampString = "437304413.81914"
+                  timestampString = "437444883.628061"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "24"
-                  endingLineNumber = "24"
-                  offsetFromSymbolStart = "348">
+                  startingLineNumber = "31"
+                  endingLineNumber = "31"
+                  offsetFromSymbolStart = "404">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -344,11 +358,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "game1010free/ViewController.swift"
-            timestampString = "437351068.72984"
+            timestampString = "437446979.666261"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
             landmarkName = "viewDidLoad()"
             landmarkType = "5">
          </BreakpointContent>
@@ -360,11 +374,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "game1010free/ViewController.swift"
-            timestampString = "437351068.72984"
+            timestampString = "437486360.839002"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "324"
-            endingLineNumber = "324"
+            startingLineNumber = "338"
+            endingLineNumber = "338"
             landmarkName = "breakLines(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -376,11 +390,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "game1010free/ViewController.swift"
-            timestampString = "437351068.72984"
+            timestampString = "437486360.839002"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "399"
-            endingLineNumber = "399"
+            startingLineNumber = "413"
+            endingLineNumber = "413"
             landmarkName = "generateFigures()"
             landmarkType = "5">
          </BreakpointContent>
@@ -392,11 +406,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "game1010free/ViewController.swift"
-            timestampString = "437406893.122745"
+            timestampString = "437486360.839002"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "525"
-            endingLineNumber = "525"
+            startingLineNumber = "550"
+            endingLineNumber = "550"
             landmarkName = "startGame()"
             landmarkType = "5">
          </BreakpointContent>
@@ -408,11 +422,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "game1010free/ViewController.swift"
-            timestampString = "437351068.72984"
+            timestampString = "437486360.839002"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "270"
-            endingLineNumber = "270"
+            startingLineNumber = "284"
+            endingLineNumber = "284"
             landmarkName = "touchesEnded(_:withEvent:)"
             landmarkType = "5">
             <Locations>
@@ -454,11 +468,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "game1010free/ViewController.swift"
-            timestampString = "437406893.122745"
+            timestampString = "437486360.839002"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "610"
-            endingLineNumber = "610"
+            startingLineNumber = "664"
+            endingLineNumber = "664"
             landmarkName = "showRank(_:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -518,13 +532,43 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "game1010free/ViewController.swift"
-            timestampString = "437351068.72984"
+            timestampString = "437446979.666261"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "64"
-            endingLineNumber = "64"
+            startingLineNumber = "76"
+            endingLineNumber = "76"
             landmarkName = "viewDidLoad()"
             landmarkType = "5">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Block2Block.ViewController.viewDidLoad (Block2Block.ViewController)() -&gt; ()"
+                  moduleName = "Block2Block"
+                  urlString = "file:///Users/philip/Documents/IOSDEV/game1010free/game1010free/ViewController.swift"
+                  timestampString = "437444883.632083"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "69"
+                  endingLineNumber = "69"
+                  offsetFromSymbolStart = "1204">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "reabstraction thunk helper from @callee_owned (@unowned ObjectiveC.NSCopying) -&gt; (@autoreleased Swift.Optional&lt;Swift.AnyObject&gt;) to @callee_owned (@owned ObjectiveC.NSCopying) -&gt; (@owned Swift.Optional&lt;Swift.AnyObject&gt;)"
+                  moduleName = "Block2Block"
+                  urlString = "file:///Users/philip/Documents/IOSDEV/game1010free/game1010free/ViewController.swift"
+                  timestampString = "437444883.632236"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "69"
+                  endingLineNumber = "69"
+                  offsetFromSymbolStart = "0">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

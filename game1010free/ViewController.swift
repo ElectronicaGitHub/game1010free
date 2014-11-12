@@ -4,7 +4,8 @@ import iAd
 var padding : CGFloat = 2;
 var size : CGFloat = 28;
 let map_size = 10;
-var blurView : UIVisualEffectView?
+//var blurView : UIVisualEffectView?
+var blurView : UIView? = UIView()
 var gameView : UIView?
 var lastShowedRank = UIView()
 var menu : Menu?
@@ -29,7 +30,7 @@ class ViewController: UIViewController, ADBannerViewDelegate {
     var pointsLabel : UILabel = UILabel()
     var figures_for_test_inited : figures_for_test = figures_for_test()
     // DIMENSIONS
-    let rectsHeight = 50
+    var rectsHeight = 50
     var figuresHeight = 435
     var rectsForDissapear = Array<Dictionary<String,Any>>()
     var clearNumbers = Array<Int>()
@@ -37,6 +38,8 @@ class ViewController: UIViewController, ADBannerViewDelegate {
     var rank = -1
     var maxRank = Ranks.count - 1
     var rankView = UIView()
+    // устранение смещения после увеличения фигуры до нормального размера
+    var afterTouchSizeOffset : CGFloat = 25
     
     var startScreen : StartScreen?
     
@@ -48,14 +51,23 @@ class ViewController: UIViewController, ADBannerViewDelegate {
         if bounds.height == 480 {
             size = 25
             figuresHeight = 380
+            afterTouchSizeOffset = 23
         } else if bounds.height == 667 {
             size = 33
             padding = 3
             figuresHeight = 520
+            afterTouchSizeOffset = 28
         } else if bounds.height == 736 {
             size = 36
             padding = 4
             figuresHeight = 570
+            afterTouchSizeOffset = 33
+        } else if bounds.height == 1024 {
+            size = 55
+            padding = 6
+            rectsHeight = 100
+            figuresHeight = 830
+            afterTouchSizeOffset = 50
         }
         
         var ud = NSUserDefaults.standardUserDefaults()
@@ -87,8 +99,10 @@ class ViewController: UIViewController, ADBannerViewDelegate {
         gameView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height))
         view.addSubview(gameView!)
         
-        var blur = UIBlurEffect(style: UIBlurEffectStyle.Light)
-        blurView = UIVisualEffectView(effect: blur)
+//        var blur = UIBlurEffect(style: UIBlurEffectStyle.Light)
+//        blurView = UIVisualEffectView(effect: blur)
+//        blurView?.backgroundColor = UIColor.blackColor()
+        blurView?.alpha = 0.4
 
 
         // LOAD IAD HIDDEN
@@ -151,8 +165,8 @@ class ViewController: UIViewController, ADBannerViewDelegate {
             var dx = coords.x - startTouchCoords.x as CGFloat
             var dy = coords.y - startTouchCoords.y as CGFloat
             
-            selectedFigure!.figureView.frame.origin.x = selectedFigure!.start_x + dx - 25
-            selectedFigure!.figureView.frame.origin.y = selectedFigure!.start_y + dy - afterTouchYOffset - 25
+            selectedFigure!.figureView.frame.origin.x = selectedFigure!.start_x + dx - afterTouchSizeOffset
+            selectedFigure!.figureView.frame.origin.y = selectedFigure!.start_y + dy - afterTouchYOffset - afterTouchSizeOffset
         }
     }
     
@@ -509,11 +523,22 @@ class ViewController: UIViewController, ADBannerViewDelegate {
         menu!.hideMenu()
         startScreen!.hideStartScreen()
         // POINTS LABEL
+        
+        
+        
         pointsLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 50))
-        pointsLabel.frame.origin.x = view.frame.width - 110
-        pointsLabel.frame.origin.y = 0
+        
+        if bounds.height == 1024 {
+            pointsLabel.frame.origin.x = view.frame.width - 200
+            pointsLabel.frame.origin.y = 25
+            pointsLabel.font = UIFont(name: "HelveticaNeue-CondensedBlack", size: 35)
+        } else {
+            pointsLabel.frame.origin.x = view.frame.width - 110
+            pointsLabel.frame.origin.y = 0
+            pointsLabel.font = UIFont(name: "HelveticaNeue-CondensedBlack", size: 20)
+        }
         pointsLabel.textAlignment = NSTextAlignment.Right
-        pointsLabel.font = UIFont(name: "HelveticaNeue-CondensedBlack", size: 20)
+        
         pointsLabel.text = String(0)
         gameView!.addSubview(pointsLabel)
         
@@ -537,6 +562,10 @@ class ViewController: UIViewController, ADBannerViewDelegate {
         for i in gameView!.subviews {
             i.removeFromSuperview()
         }
+        blurView!.frame = CGRect(x: 0, y: 0, width: gameView!.frame.width, height: gameView!.frame.height)
+        blurView!.backgroundColor = UIColor.blackColor()
+        gameView!.addSubview(blurView!)
+        
         figuresArray = []
         rectanglesArray = []
         score = 0
@@ -567,11 +596,35 @@ class ViewController: UIViewController, ADBannerViewDelegate {
         }
         
         if showNewRank {
+            
+            // set sizes
+            var rankPositionX : CGFloat
+            var rankPositionY : CGFloat
+            var rankFontSize : CGFloat
+            var rankViewHeight : CGFloat
+            var rankImgSize : CGFloat
+            
+            if bounds.height == 1024 {
+                rankPositionX = 75
+                rankPositionY = 35
+                rankFontSize = 30
+                rankViewHeight = 45
+                rankImgSize = 35
+            } else {
+                rankPositionX = 10
+                rankPositionY = 10
+                rankFontSize = 20
+                rankViewHeight = 35
+                rankImgSize = 25
+            }
+            
+            //
+            
             let str = Ranks[rank][1] as? String
             let str_l = countElements(str!)
             let rs = 40 + str_l * 10
             
-            rankView = UIView(frame: CGRect(x: 10, y: -40, width: 0, height: 35))
+            rankView = UIView(frame: CGRect(x: rankPositionX, y: -60, width: 0, height: rankViewHeight))
             rankView.backgroundColor = UIColor(rgb: 0xFFFFFF)
             rankView.layer.cornerRadius = 4
             rankView.layer.borderWidth = 1
@@ -579,26 +632,27 @@ class ViewController: UIViewController, ADBannerViewDelegate {
             rankView.clipsToBounds = true
             
             view.addSubview(rankView)
-            var iv =  UIImageView(frame: CGRect(x: 0, y: 0, width: 25, height: 25))
-            iv.center = CGPoint(x: 17.5, y: rankView.frame.height/2)
+            var iv = UIImageView(frame: CGRect(x: 0, y: 0, width: rankImgSize, height: rankImgSize))
+            iv.center = CGPoint(x: rankViewHeight/2, y: rankView.frame.height/2)
             var viewpic = CGImageCreateWithImageInRect(UIImage(named: "ranks.png").CGImage, CGRect(x: x_offset * rank, y: 0, width: 220, height: 220))
             iv.image = UIImage(CGImage: viewpic)
             rankView.addSubview(iv)
             
-            var label = UILabel(frame: CGRect(x: 35, y: 0, width: 0, height: 35))
+            var label = UILabel(frame: CGRect(x: rankViewHeight, y: 0, width: 0, height: 35))
             label.text = Ranks[rank][1] as? String
-            label.font = UIFont(name: "HelveticaNeue-CondensedBlack", size: 20)
+            label.font = UIFont(name: "HelveticaNeue-CondensedBlack", size: rankFontSize)
             let rect = label.attributedText?.boundingRectWithSize(CGSize(width: 9999, height: 35), options: .UsesLineFragmentOrigin, context: nil)
             label.center.y = rankView.frame.height/2
             label.frame.size.width = rect!.size.width
             rankView.addSubview(label)
             
-            let finalSize = label.frame.width + 40
+            let finalSize = label.frame.width + rankViewHeight + 5
             
             rankView.frame.size.width = finalSize
             
             UIView.animateWithDuration(0.3, delay: 0.3, usingSpringWithDamping: 0.5, initialSpringVelocity: 1, options: nil, animations: {
-                self.rankView.frame.origin.y = 10
+                    self.rankView.frame.origin.y = rankPositionY
+                
                 }, completion: { _ in
                     
             })

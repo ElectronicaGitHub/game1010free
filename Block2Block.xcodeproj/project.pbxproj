@@ -23,6 +23,16 @@
 		D45247C81A10BAAB00E009A1 /* block2blocklogoblack.png in Resources */ = {isa = PBXBuildFile; fileRef = D45247C71A10BAAB00E009A1 /* block2blocklogoblack.png */; };
 		D45247CA1A10D43000E009A1 /* block2blocklogoimage.png in Resources */ = {isa = PBXBuildFile; fileRef = D45247C91A10D43000E009A1 /* block2blocklogoimage.png */; };
 		D45247D81A111AD400E009A1 /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D400CA2119FFDC2400044BDC /* iAd.framework */; };
+		D4EB93E41A1382B9003F5B56 /* b2bimg29x1.png in Resources */ = {isa = PBXBuildFile; fileRef = D4EB93DA1A1382B9003F5B56 /* b2bimg29x1.png */; };
+		D4EB93E51A1382B9003F5B56 /* b2bimg40x1.png in Resources */ = {isa = PBXBuildFile; fileRef = D4EB93DB1A1382B9003F5B56 /* b2bimg40x1.png */; };
+		D4EB93E61A1382B9003F5B56 /* b2bimg50x1.png in Resources */ = {isa = PBXBuildFile; fileRef = D4EB93DC1A1382B9003F5B56 /* b2bimg50x1.png */; };
+		D4EB93E71A1382B9003F5B56 /* b2bimg50x2.png in Resources */ = {isa = PBXBuildFile; fileRef = D4EB93DD1A1382B9003F5B56 /* b2bimg50x2.png */; };
+		D4EB93E81A1382B9003F5B56 /* b2bimg57x1.png in Resources */ = {isa = PBXBuildFile; fileRef = D4EB93DE1A1382B9003F5B56 /* b2bimg57x1.png */; };
+		D4EB93E91A1382B9003F5B56 /* b2bimg57x2.png in Resources */ = {isa = PBXBuildFile; fileRef = D4EB93DF1A1382B9003F5B56 /* b2bimg57x2.png */; };
+		D4EB93EA1A1382B9003F5B56 /* b2bimg72x1.png in Resources */ = {isa = PBXBuildFile; fileRef = D4EB93E01A1382B9003F5B56 /* b2bimg72x1.png */; };
+		D4EB93EB1A1382B9003F5B56 /* b2bimg72x2.png in Resources */ = {isa = PBXBuildFile; fileRef = D4EB93E11A1382B9003F5B56 /* b2bimg72x2.png */; };
+		D4EB93EC1A1382B9003F5B56 /* b2bimg76x1.png in Resources */ = {isa = PBXBuildFile; fileRef = D4EB93E21A1382B9003F5B56 /* b2bimg76x1.png */; };
+		D4EB93ED1A1382B9003F5B56 /* b2bimg76x2.png in Resources */ = {isa = PBXBuildFile; fileRef = D4EB93E31A1382B9003F5B56 /* b2bimg76x2.png */; };
 		D4F0B43519FA8759000000F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F0B43419FA8759000000F0 /* AppDelegate.swift */; };
 		D4F0B43719FA8759000000F0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F0B43619FA8759000000F0 /* ViewController.swift */; };
 		D4F0B43A19FA8759000000F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4F0B43819FA8759000000F0 /* Main.storyboard */; };
@@ -80,6 +90,16 @@
 		D45247C51A10B7A400E009A1 /* StartScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartScreen.swift; sourceTree = "<group>"; };
 		D45247C71A10BAAB00E009A1 /* block2blocklogoblack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = block2blocklogoblack.png; path = ../../../block2blocklogoblack.png; sourceTree = "<group>"; };
 		D45247C91A10D43000E009A1 /* block2blocklogoimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = block2blocklogoimage.png; path = ../../../block2blocklogoimage.png; sourceTree = "<group>"; };
+		D4EB93DA1A1382B9003F5B56 /* b2bimg29x1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = b2bimg29x1.png; path = ../../../b2bicons/b2bimg29x1.png; sourceTree = "<group>"; };
+		D4EB93DB1A1382B9003F5B56 /* b2bimg40x1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = b2bimg40x1.png; path = ../../../b2bicons/b2bimg40x1.png; sourceTree = "<group>"; };
+		D4EB93DC1A1382B9003F5B56 /* b2bimg50x1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = b2bimg50x1.png; path = ../../../b2bicons/b2bimg50x1.png; sourceTree = "<group>"; };
+		D4EB93DD1A1382B9003F5B56 /* b2bimg50x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = b2bimg50x2.png; path = ../../../b2bicons/b2bimg50x2.png; sourceTree = "<group>"; };
+		D4EB93DE1A1382B9003F5B56 /* b2bimg57x1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = b2bimg57x1.png; path = ../../../b2bicons/b2bimg57x1.png; sourceTree = "<group>"; };
+		D4EB93DF1A1382B9003F5B56 /* b2bimg57x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = b2bimg57x2.png; path = ../../../b2bicons/b2bimg57x2.png; sourceTree = "<group>"; };
+		D4EB93E01A1382B9003F5B56 /* b2bimg72x1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = b2bimg72x1.png; path = ../../../b2bicons/b2bimg72x1.png; sourceTree = "<group>"; };
+		D4EB93E11A1382B9003F5B56 /* b2bimg72x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = b2bimg72x2.png; path = ../../../b2bicons/b2bimg72x2.png; sourceTree = "<group>"; };
+		D4EB93E21A1382B9003F5B56 /* b2bimg76x1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = b2bimg76x1.png; path = ../../../b2bicons/b2bimg76x1.png; sourceTree = "<group>"; };
+		D4EB93E31A1382B9003F5B56 /* b2bimg76x2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = b2bimg76x2.png; path = ../../../b2bicons/b2bimg76x2.png; sourceTree = "<group>"; };
 		D4F0B42F19FA8759000000F0 /* Block2Block.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Block2Block.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4F0B43319FA8759000000F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4F0B43419FA8759000000F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -155,6 +175,16 @@
 		D4F0B43219FA8759000000F0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D4EB93DA1A1382B9003F5B56 /* b2bimg29x1.png */,
+				D4EB93DB1A1382B9003F5B56 /* b2bimg40x1.png */,
+				D4EB93DC1A1382B9003F5B56 /* b2bimg50x1.png */,
+				D4EB93DD1A1382B9003F5B56 /* b2bimg50x2.png */,
+				D4EB93DE1A1382B9003F5B56 /* b2bimg57x1.png */,
+				D4EB93DF1A1382B9003F5B56 /* b2bimg57x2.png */,
+				D4EB93E01A1382B9003F5B56 /* b2bimg72x1.png */,
+				D4EB93E11A1382B9003F5B56 /* b2bimg72x2.png */,
+				D4EB93E21A1382B9003F5B56 /* b2bimg76x1.png */,
+				D4EB93E31A1382B9003F5B56 /* b2bimg76x2.png */,
 				D416BD341A12A00F00765DDF /* b2bimg29x2.png */,
 				D416BD351A12A00F00765DDF /* b2bimg29x3.png */,
 				D416BD361A12A00F00765DDF /* b2bimg40x2.png */,
@@ -272,14 +302,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				D416BD3C1A12A00F00765DDF /* b2bimg40x2.png in Resources */,
+				D4EB93EC1A1382B9003F5B56 /* b2bimg76x1.png in Resources */,
 				D45247C81A10BAAB00E009A1 /* block2blocklogoblack.png in Resources */,
 				D45247CA1A10D43000E009A1 /* block2blocklogoimage.png in Resources */,
+				D4EB93E71A1382B9003F5B56 /* b2bimg50x2.png in Resources */,
+				D4EB93ED1A1382B9003F5B56 /* b2bimg76x2.png in Resources */,
 				D416BD3F1A12A00F00765DDF /* b2bimg60x3.png in Resources */,
 				D416BD3D1A12A00F00765DDF /* b2bimg40x3.png in Resources */,
 				D4F0B43A19FA8759000000F0 /* Main.storyboard in Resources */,
+				D4EB93EB1A1382B9003F5B56 /* b2bimg72x2.png in Resources */,
 				D4F0B43F19FA8759000000F0 /* LaunchScreen.xib in Resources */,
+				D4EB93E91A1382B9003F5B56 /* b2bimg57x2.png in Resources */,
+				D4EB93E51A1382B9003F5B56 /* b2bimg40x1.png in Resources */,
 				D4F0B43C19FA8759000000F0 /* Images.xcassets in Resources */,
+				D4EB93E61A1382B9003F5B56 /* b2bimg50x1.png in Resources */,
+				D4EB93E81A1382B9003F5B56 /* b2bimg57x1.png in Resources */,
 				D416BD3B1A12A00F00765DDF /* b2bimg29x3.png in Resources */,
+				D4EB93EA1A1382B9003F5B56 /* b2bimg72x1.png in Resources */,
+				D4EB93E41A1382B9003F5B56 /* b2bimg29x1.png in Resources */,
 				D416BD3E1A12A00F00765DDF /* b2bimg60x2.png in Resources */,
 				D416BD3A1A12A00F00765DDF /* b2bimg29x2.png in Resources */,
 				D43251E71A0D311E0056EF03 /* ranks.png in Resources */,
@@ -447,9 +487,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = game1010free/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Block2Block;
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -458,9 +502,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = game1010free/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = Block2Block;
+				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
