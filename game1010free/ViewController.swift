@@ -5,7 +5,7 @@ var padding : CGFloat = 2;
 var size : CGFloat = 28;
 let map_size = 10;
 //var blurView : UIVisualEffectView?
-var blurView : UIView? = UIView()
+//var blurView : UIView? = UIView()
 var gameView : UIView?
 var lastShowedRank = UIView()
 var menu : Menu?
@@ -13,6 +13,7 @@ var udKey = "b2bhighscores"
 var userHighscores : AnyObject?
 var maxScore : Int? = Int()
 var highScoreReached : Bool = false
+var menuCoefficient : CGFloat = 1 // for 568
 
 var bounds : CGRect = CGRect()
 
@@ -47,7 +48,10 @@ class ViewController: UIViewController, ADBannerViewDelegate {
         super.viewDidLoad()
         
         bounds = UIScreen.mainScreen().bounds
-        println(bounds)
+        
+        menuCoefficient = bounds.height / 568
+//        println(bounds)
+//        println(menuCoefficient)
         if bounds.height == 480 {
             size = 25
             figuresHeight = 380
@@ -102,7 +106,7 @@ class ViewController: UIViewController, ADBannerViewDelegate {
 //        var blur = UIBlurEffect(style: UIBlurEffectStyle.Light)
 //        blurView = UIVisualEffectView(effect: blur)
 //        blurView?.backgroundColor = UIColor.blackColor()
-        blurView?.alpha = 0.4
+//        blurView?.alpha = 0.4
 
 
         // LOAD IAD HIDDEN
@@ -252,7 +256,7 @@ class ViewController: UIViewController, ADBannerViewDelegate {
                         }
                         
                         if game_ended == true {
-                            println("игра закончена нахуй")
+//                            println("игра закончена нахуй")
                             
                             if self.score > maxScore {
                                 var data : NSDictionary = [
@@ -392,14 +396,22 @@ class ViewController: UIViewController, ADBannerViewDelegate {
         let delay : NSTimeInterval = NSTimeInterval(stTime)
         
         UIView.animateKeyframesWithDuration(0.3, delay: delay, options: nil, animations: {
-                self.rectanglesArray[j].type = "default"
-                self.rectanglesArray[j].box.transform = CGAffineTransformMakeScale(1.2, 1.2)
-                self.rectanglesArray[j].box.backgroundColor = self.defaultColor
+            if self.rectanglesArray.isEmpty == false {
+                if let b = self.rectanglesArray[j] as Rectangle! {
+                    b.type = "default"
+                    b.box.transform = CGAffineTransformMakeScale(1.2, 1.2)
+                    b.box.backgroundColor = self.defaultColor
+                }
+            }
             }, completion: {
                 _ in
-                self.rectanglesArray[j].box.transform = CGAffineTransformIdentity
-                self.rectanglesArray[j].color = self.defaultColor
-                self.rectanglesArray[j].box.backgroundColor = self.defaultColor
+                if self.rectanglesArray.isEmpty == false {
+                    if let b = self.rectanglesArray[j] as Rectangle! {
+                        b.box.transform = CGAffineTransformIdentity
+                        b.color = self.defaultColor
+                        b.box.backgroundColor = self.defaultColor
+                    }
+                }
         })
     }
     
@@ -562,9 +574,9 @@ class ViewController: UIViewController, ADBannerViewDelegate {
         for i in gameView!.subviews {
             i.removeFromSuperview()
         }
-        blurView!.frame = CGRect(x: 0, y: 0, width: gameView!.frame.width, height: gameView!.frame.height)
-        blurView!.backgroundColor = UIColor.blackColor()
-        gameView!.addSubview(blurView!)
+//        blurView!.frame = CGRect(x: 0, y: 0, width: gameView!.frame.width, height: gameView!.frame.height)
+//        blurView!.backgroundColor = UIColor.blackColor()
+//        gameView!.addSubview(blurView!)
         
         figuresArray = []
         rectanglesArray = []

@@ -3,13 +3,7 @@
     {
       "size" : "29x29",
       "idiom" : "iphone",
-      "filename" : "b2bimg29x1.png",
-      "scale" : "1x"
-    },
-    {
-      "size" : "29x29",
-      "idiom" : "iphone",
-      "filename" : "b2bimg29x2.png",
+      "filename" : "b2bimg29x2-1.png",
       "scale" : "2x"
     },
     {
@@ -31,18 +25,6 @@
       "scale" : "3x"
     },
     {
-      "size" : "57x57",
-      "idiom" : "iphone",
-      "filename" : "b2bimg57x1.png",
-      "scale" : "1x"
-    },
-    {
-      "size" : "57x57",
-      "idiom" : "iphone",
-      "filename" : "b2bimg57x2.png",
-      "scale" : "2x"
-    },
-    {
       "size" : "60x60",
       "idiom" : "iphone",
       "filename" : "b2bimg60x2.png",
@@ -57,13 +39,13 @@
     {
       "size" : "29x29",
       "idiom" : "ipad",
-      "filename" : "b2bimg29x1-1.png",
+      "filename" : "b2bimg29x1.png",
       "scale" : "1x"
     },
     {
       "size" : "29x29",
       "idiom" : "ipad",
-      "filename" : "b2bimg29x2-1.png",
+      "filename" : "b2bimg29x2.png",
       "scale" : "2x"
     },
     {
@@ -79,30 +61,6 @@
       "scale" : "2x"
     },
     {
-      "size" : "50x50",
-      "idiom" : "ipad",
-      "filename" : "b2bimg50x1.png",
-      "scale" : "1x"
-    },
-    {
-      "size" : "50x50",
-      "idiom" : "ipad",
-      "filename" : "b2bimg50x2.png",
-      "scale" : "2x"
-    },
-    {
-      "size" : "72x72",
-      "idiom" : "ipad",
-      "filename" : "b2bimg72x1.png",
-      "scale" : "1x"
-    },
-    {
-      "size" : "72x72",
-      "idiom" : "ipad",
-      "filename" : "b2bimg72x2.png",
-      "scale" : "2x"
-    },
-    {
       "size" : "76x76",
       "idiom" : "ipad",
       "filename" : "b2bimg76x1.png",
@@ -113,16 +71,13 @@
       "idiom" : "ipad",
       "filename" : "b2bimg76x2.png",
       "scale" : "2x"
-    },
-    {
-      "size" : "120x120",
-      "idiom" : "car",
-      "filename" : "b2bimg60x2-1.png",
-      "scale" : "1x"
     }
   ],
   "info" : {
     "version" : 1,
     "author" : "xcode"
+  },
+  "properties" : {
+    "pre-rendered" : true
   }
 }
